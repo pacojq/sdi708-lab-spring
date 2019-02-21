@@ -19,8 +19,14 @@ public class MarksControllers {
 		model.addAttribute("markList", marksService.getMarks());
 		return "mark/list";
 	}
+	
+	
+	@RequestMapping(value="/mark/add")
+	public String getMark(@ModelAttribute Mark mark) {
+		return "/mark/add";
+	}
 
-	@RequestMapping(value="/mark/add", method=RequestMethod.POST )
+	@RequestMapping(value="/mark/add", method=RequestMethod.POST)
 	public String setMark(@ModelAttribute Mark mark) {
 		marksService.addMark(mark);
 		return "redirect:/mark/list";
@@ -54,4 +60,11 @@ public class MarksControllers {
 	}
 
 	
+	
+	@RequestMapping("/mark/list/update")
+	public String updateList(Model model) {
+		model.addAttribute("markList", marksService.getMarks() );
+		return "mark/list :: tableMarks";
+	}
+
 }
