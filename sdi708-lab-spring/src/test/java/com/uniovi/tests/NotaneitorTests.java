@@ -1,6 +1,9 @@
 package com.uniovi.tests;
 
-import static org.junit.Assert.*;
+import static org.assertj.core.api.Assertions.fail;
+
+
+import org.aspectj.lang.annotation.After;
 import org.junit.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,7 +11,7 @@ import org.junit.runners.*;
 
 
 //Ordenamos las pruebas por el nombre del método
-//@FixMethodOrder(MethodSorters.NAME_ASCENDING) No lo reconoce
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 
 public class NotaneitorTests {
 	
@@ -34,12 +37,12 @@ public class NotaneitorTests {
 	}
 
 	//Después de cada prueba se borran las cookies del navegador
-	@After
+	@After(value = "")
 	public void tearDown() throws Exception {
 		driver.manage().deleteAllCookies();
 	}
 
-	/*
+	/* No funciona
 	//Antes de la primera prueba
 	@BeforeClass
 	static public void begin() {
